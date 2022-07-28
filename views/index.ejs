@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <%- include ("./partials/head.ejs")  %>
+
+</head>
+
+<body>
+    <header>
+
+        <%- include ("./partials/navbar.ejs")  %>
+        
+    </header>
+
+    <main>
+        <!--Main BANNER-->
+        <section>
+            <img src="" alt="Home Banner"
+        </section>
+        <!--Section Destacados--> 
+        <h2>Destacados!</h2>
+        <section class="seccion_main">
+            <!--Section Item-->
+            <article class="articulo">
+                <!--Item-->
+                <div class="product-item_img">
+                    <img src="img/camisetaArgentina.jpg" alt="Camiseta de Argentina ">
+                </div>
+                <!--Item Info-->
+                <div>
+                    <p class="info-price">$1.200</p>
+                    <p class="info-discount">25% OFF</p>
+                </div>
+                <!--Item Title-->
+                <h3>Camiseta de Argentina</h3>
+                <!--El resto de los items sigue la misma estructura detallada arriba-->
+            </article>
+            <article class="articulo">
+                <!--Item-->
+                <div class="product-item_img">
+                    <img src="img/camisetaColombia.jpg" alt="Camiseta de Colombia ">
+                </div>
+                <!--Item Info-->
+                <div>
+                    <p class="info-price">$2.300</p>
+                    <p class="info-discount">20% OFF</p>
+                </div>
+                <!--Item Title-->
+                <h3>Camiseta de Colombia</h3>
+            </article>
+            <article class="articulo">
+                <!--Item-->
+                <div class="product-item_img">
+                    <img src="img/camisetaMexico.jpg" alt="Camiseta de Mexico ">
+                </div>
+                <!--Item Info-->
+                <div>
+                    <p class="info-price">$1.800</p>
+                    <p class="info-discount">30% OFF</p>
+                </div>
+                <!--Item Title-->
+                <h3>Camiseta de Mexico</h3>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+
+        <%- include ("./partials/footer.ejs")  %>
+
+    </footer>
+    
+</body>
+</html>

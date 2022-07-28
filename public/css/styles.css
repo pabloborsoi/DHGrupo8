@@ -1,0 +1,287 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/****************HEADER************/
+
+
+header{
+    background-color: white;  
+}
+
+.up-section {
+    display:flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.up-section-img_Logo {
+    width: calc(25% - 20px);
+}
+
+.up-section-img_Logo > img {
+    margin: 20px;
+    width:200px;
+    height:180px;
+    display: block;
+    position: relative;
+    
+}
+.top-container__search-bar {
+    display: flex;
+    flex-direction: row;
+    width: calc(50% - 12px);
+    align-items:center;
+    position: relative;
+}
+
+.search-bar__btn {
+    height: 35px;
+    width: 35px;
+    border-radius: 6px;
+    background-color:rgba(119, 202, 216, 0.132);
+    position:relative;
+    right: 0;
+    cursor:pointer;
+}
+
+.search-bar__input {
+    border-radius: 6px;
+    background-color: rgba(119, 202, 216, 0.132);
+    padding: 6px;
+    height: 35px;
+    width: 100%;
+}
+
+.bottom-container__top-right-menu {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 40px;
+    width: 18%;
+}
+
+.bottom-container__top-right-menu ul, li {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+}
+
+.bottom-container__top-right-menu .fa-solid {
+    color: black;
+    font-size: 40px;
+}
+
+
+.bottom-container__center-menu {
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: dotted 2px red;
+    text-decoration: none;
+}
+
+.bottom-container__center-menu ul {
+    display: flex;
+    justify-content: center;
+    padding:10px;
+    margin: 10px 15px;
+    list-style: none;
+}
+
+.bottom-selection {
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.product-item_img{
+    background-color: #fff;
+    margin-bottom: 15px;
+    height: 40vh;
+    width: 20px;
+    display:inline-flex;
+    margin-top:10px;
+}
+
+
+/*****************MAIN****************************/
+
+.articulo{
+    display:inline-block;
+    /*align-items:flex-end;*/
+    
+}
+
+.seccion_main{
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+}
+
+/******************FOOTER***********************/
+
+.footer {
+    border: solid 2px black;
+    padding: 20px 0;
+    margin: 40px 40px;
+
+}
+.section_footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.info_footer {
+    text-align: center;
+}
+
+.info_footer p, div {
+    margin: 10px;
+}
+
+
+/***************LOGIN*****************/
+
+.login-title {
+    display: flex;
+}
+
+.login-title .session-title {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    padding: 110 110px;
+}
+
+.login-title .session-register {
+    font-size: 20px;
+    font-weight: 700;
+    opacity: 0.3;
+    color: black;
+    text-decoration: none;
+    padding-left: 30px;
+}
+
+.session-title,
+.session-register {
+    width: 50%;
+}
+
+.login-data {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}    
+
+.table {
+    height: 40px;
+    width: 400px;
+    margin: 15px 0 15px;
+}
+
+.login-type {
+    align-items: center;
+}
+
+.login-type-options {
+    display: flex;
+    width: 100% ;
+}
+
+.login-type-options, .a {
+    margin-right: 10px;
+}
+
+.login-type-options, .b{
+    margin-right: 100px;
+}
+.login-type-options, .c {
+    color: black;
+}
+
+.bottom-log-in {
+    height: 40px;
+    width: 400px;
+    margin-top: 20px;
+}
+
+/***************REGISTER****************/
+
+.register-title {
+    display: flex;
+
+}
+
+.register-title .session-title {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    font-weight: 700;
+    opacity: 0.3;
+    color: black;
+    text-decoration: none;
+}
+
+.register-title .session-register {
+    display: flex;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+}
+.register-data {
+    display: flex;
+    justify-content: center;
+}
+
+.register-type {
+    text-align: center;
+}
+
+.fa-brands, .fa-solid {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/***********************SHOPPINGCART**************/
+
+.cart-img {
+    display: flex;
+    width: 200px;
+    height: 200px;
+}
+
+.info-cart {
+    max-width: 60%;
+    border: dotted 2px red;
+    display: inline-flex;
+    align-content: center;
+}
+
+.info-1 {
+}
+
+.info-2 {
+    
+}
+
+.info-cart1 {
+    display: flex;
+}
+
+.info-1 p {
+}
+
+.info-cart i {
+    display: flex;
+    max-width: 20%;
+}
+
+.envio {
+    text-align: right;
+    line-height: 12px;
+}
