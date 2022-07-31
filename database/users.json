@@ -14,5 +14,13 @@
   "password": "$2a$10$EAS0iXgVmcPCUhYZ.tMmrOktuccA77G8R7jBiRJPVK0FUbeMNqHx.",
   "country": "Argentina",
   "avatar": "1658878966195_img.png"
+ },
+ {
+  "id": 3,
+  "fullName": "Andres Peres",
+  "email": "claudio@gmail.com",
+  "password": "$2a$10$bwhEzQFvodWq4VLqyw7AzekQiI23yicpCrofJvyb.6z/MoTdCKS/2",
+  "country": "Argentina",
+  "avatar": "1659305203413_img.png"
  }
 ]

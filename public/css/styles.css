@@ -58,9 +58,9 @@ header{
 
 .bottom-container__top-right-menu {
     display: flex;
-    justify-content: flex-end;
+    justify-content: right;
     font-size: 40px;
-    width: 18%;
+    width: 300%;
 }
 
 .bottom-container__top-right-menu ul, li {
