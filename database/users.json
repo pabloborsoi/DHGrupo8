@@ -22,5 +22,13 @@
   "password": "$2a$10$bwhEzQFvodWq4VLqyw7AzekQiI23yicpCrofJvyb.6z/MoTdCKS/2",
   "country": "Argentina",
   "avatar": "1659305203413_img.png"
+ },
+ {
+  "id": 4,
+  "fullName": "lucas",
+  "email": "lucas@gmail.com",
+  "password": "$2a$10$XxTYrc/7OYExpL4mchLv6uZpIwa0W/sKIAixOnsE7SeZHZqTLBbFG",
+  "country": "Bolivia",
+  "avatar": "1659309413389_img.png"
  }
 ]
