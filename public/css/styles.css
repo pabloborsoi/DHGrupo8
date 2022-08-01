@@ -53,14 +53,14 @@ header{
     background-color: rgba(119, 202, 216, 0.132);
     padding: 6px;
     height: 35px;
-    width: 100%;
+    width: 10%;
 }
 
 .bottom-container__top-right-menu {
     display: flex;
     justify-content: right;
     font-size: 40px;
-    width: 160%;
+    width: 30%;
 }
 
 .bottom-container__top-right-menu ul, li {

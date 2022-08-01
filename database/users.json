@@ -25,6 +25,7 @@
  },
  {
   "id": 4,
+<<<<<<< HEAD
   "fullName": "eze",
   "email": "eze@hotmail.com",
   "password": "$2a$10$Hu1tZaFH10doBNXmRQ55h.9qXu6J/sdfXBmyuWjjWm6bhkxDoovPG",
@@ -38,5 +39,12 @@
   "password": "$2a$10$Ckmdv0avZSVV6fYzjQ76GOMVaXt494oXCoHrjCS4bVwrdxCRGUsBG",
   "country": "Argentina",
   "avatar": "1659351735234_img.jpg"
+=======
+  "fullName": "lucas",
+  "email": "lucas@gmail.com",
+  "password": "$2a$10$XxTYrc/7OYExpL4mchLv6uZpIwa0W/sKIAixOnsE7SeZHZqTLBbFG",
+  "country": "Bolivia",
+  "avatar": "1659309413389_img.png"
+>>>>>>> ec8b9aaabbf404f381d0ccee9404f71948cc1c62
  }
 ]

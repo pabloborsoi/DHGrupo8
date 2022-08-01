@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>   
     <!-- Header TOP (Logo, Search-Bar, Text) -->
     <section class="up-section">
@@ -58,3 +59,75 @@
     </nav>
 </section>
 </div>
+=======
+<% if (locals.isLogged) { %>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#">Digital Shirts</a>
+			
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		
+			<div class="collapse navbar-collapse" id="mainNavbar">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item"><a class="nav-link" href="/">Main</a></li>
+					<li class="nav-item"><a class="nav-link" href="/cart">Carrito</a></li>
+				</ul>
+				<ul class="navbar-nav align-items-center">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<img src="/images/avatars/<%= locals.userLogged.avatar %>" width="40" style="border-radius: 100%;">
+							Hi <%= locals.userLogged.fullName %> 
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/user/profile">My profile</a>
+							<li><hr class="dropdown-divider"></li>
+							<a class="dropdown-item" href="/user/logout">Logout</a>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<% } else { %>
+		<div>   
+			<!-- Header TOP (Logo, Search-Bar, Text) -->
+			<section class="up-section">
+			<!-- Header TOP LOGO -->
+			<div class="up-section-img_Logo">
+				<img src="images/logoDS22.jpeg" alt="Logo Digital Shirts">
+			</div>
+			<div class="bottom-container__top-left-menu">
+				<ul>
+					<li><a href="/user/login"><i class="fa-solid fa-user"></i></a></li>
+					<li><a href="/user/register"><i class="fa-solid fa-address-card"></i></a></li>
+					<li><a href="/favorite"><i class="fa-solid fa-heart"></i></a></li>
+					<li><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+				</ul>
+			</div>
+			</section>
+			<!--OK-->
+			<!-- Header BOTTOM MENU -->
+			<section class="bottom-container__center-menu">
+			<div class="botom-container__center-menu-option">
+				<ul>
+		
+					<li><a class="bottom-selection" href="#">Categorías</a></li>
+					<li><a class="bottom-selection" href="#">Hombre</a></li>
+					<li><a class="bottom-selection" href="#">Mujer</a></li>
+					<li><a class="bottom-selection" href="#">Infantil</a></li>
+					<li><a class="bottom-selection" href="#">Marcas</a></li>
+					<li><a class="bottom-selection" href="#">Ofertas</a></li>
+				</ul>
+			</div>
+			</section>
+			<!-- Header HAMBURGER MENU -->
+			<section class="hamburger-container">
+			<nav class="hamburger-menu">
+				<i class="fas fa-bars"></i>
+			</nav>
+		</section>
+		</div>
+	<% } %>
+>>>>>>> ec8b9aaabbf404f381d0ccee9404f71948cc1c62
