@@ -12,8 +12,22 @@
     </div>
     <div class="bottom-container__top-right-menu">
         <ul>
-            <li><a href="/user/login"><i class="fa-solid fa-user"></i></a></li>
-            <li><a href="/user/register"><i class="fa-solid fa-address-card"></i></a></li>
+            <% if (locals.isLogged) { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/images/avatars/<%= locals.userLogged.avatar %>" width="40" style="border-radius: 100%;">
+                        Hi <%= locals.userLogged.fullName %> 
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/user/profile">My profile</a>
+                        <li><hr class="dropdown-divider"></li>
+                        <a class="dropdown-item" href="/user/logout">Logout</a>
+                    </ul>
+                </li>
+            <% } else { %>
+                <li class="nav-item"><a class="nav-link" href="/user/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user/register">Register</a></li>
+            <% } %>
             <li><a href="/favorite"><i class="fa-solid fa-heart"></i></a></li>
             <li><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
         </ul>
@@ -30,24 +44,6 @@
             <li><a class="bottom-selection" href="#">Infantil</a></li>
             <li><a class="bottom-selection" href="#">Marcas</a></li>
             <li><a class="bottom-selection" href="#">Ofertas</a></li>
-        </ul>
-        <ul class="navbar-nav align-items-center">
-            <% if (locals.isLogged) { %>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/images/avatars/<%= locals.userLogged.avatar %>" width="40" style="border-radius: 100%;">
-                        Hi <%= locals.userLogged.fullName %> 
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/user/profile">My profile</a>
-                        <li><hr class="dropdown-divider"></li>
-                        <a class="dropdown-item" href="/user/logout">Logout</a>
-                    </ul>
-                </li>
-            <% } else { %>
-                <li class="nav-item"><a class="nav-link" href="/user/register">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="/user/login">Login</a></li>
-            <% } %>
         </ul>
     </div>
     </section>

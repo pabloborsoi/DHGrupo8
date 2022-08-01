@@ -38,5 +38,13 @@
   "password": "$2a$10$Ckmdv0avZSVV6fYzjQ76GOMVaXt494oXCoHrjCS4bVwrdxCRGUsBG",
   "country": "Argentina",
   "avatar": "1659351735234_img.jpg"
+ },
+ {
+  "id": 6,
+  "fullName": "hola",
+  "email": "hola@hotmail.com",
+  "password": "$2a$10$WkqPJYHG19VbxaTPXcjemeuAz.ZKSbahpFPMdQspTLQcOoN4/Se0O",
+  "country": "Argentina",
+  "avatar": "1659363534502_img.jpg"
  }
 ]
