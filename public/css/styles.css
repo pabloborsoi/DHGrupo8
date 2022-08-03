@@ -14,7 +14,7 @@ header{
 
 .up-section {
     display:flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 24px;
 }
 
@@ -284,4 +284,23 @@ header{
 .envio {
     text-align: right;
     line-height: 12px;
+}
+
+/* Cambios en el CSS */
+
+#banner-img {
+    width: 100%;
+    padding: 5px;
+    height: auto;
+    padding: 0%;
+    opacity: 0.9;
+}
+
+.bottom-container__top-right-menu {
+    justify-content: space-around;
+    text-align: right;
+}
+
+.nav-link {
+    text-decoration: none;
 }
