@@ -28,7 +28,9 @@ app.set('view engine', 'ejs');
 const mainRoutes = require('./routes/mainRoutes');
 const userRoutes = require('./routes/userRoutes');
 const productRouter = require ('./routes/productRouter');
+const adminRoutes = require ('./routes/adminRoutes');
 
 app.use('/', mainRoutes);
 app.use(productRouter);
 app.use('/user', userRoutes);
+app.use(adminRoutes);

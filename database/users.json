@@ -46,5 +46,13 @@
   "password": "$2a$10$WkqPJYHG19VbxaTPXcjemeuAz.ZKSbahpFPMdQspTLQcOoN4/Se0O",
   "country": "Argentina",
   "avatar": "1659363534502_img.jpg"
+ },
+ {
+  "id": 7,
+  "fullName": "jacqueline",
+  "email": "jacky@hotmail.com",
+  "password": "$2a$10$ulD2MV8JwZBKOyeR5J36fOnveQiXP4rgA2j7DYImwIY7MwLgbSCrq",
+  "country": "Argentina",
+  "avatar": "1659538412605_img.jpg"
  }
 ]
