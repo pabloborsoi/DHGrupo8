@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const multer = require('multer');
 
-const controllersAdmin = require(path.resolve(__dirname,'../controllers/controllerAdmin'));
+const controllerAdmin = require(path.resolve(__dirname,'../controllers/controllerAdmin'));
 //Requerir el middleware Ruta Acceso
 //const acceso = require(path.resolve(__dirname,'../middlewares/acceso'));
 
@@ -19,12 +19,12 @@ var storage = multer.diskStorage({
    
   const upload = multer({ storage })
 
-//router.get('/administrar', acceso, controllersAdmin.index);
-//router.get('/administrar/create', controllersAdmin.create);
-router.post('/create', upload.single('imagen'), controllersAdmin.save);
-router.get('/detail/:id', controllersAdmin.show);
-router.get('/edit/:id', controllersAdmin.edit);
-router.put('/edit/:id', upload.single('imagen'), controllersAdmin.update);
-router.get('/delete/:id', controllersAdmin.destroy);
+router.get('/administrar', controllerAdmin.index);
+router.get('/create', controllerAdmin.create);
+router.post('/create', upload.single('imagen'), controllerAdmin.save);
+router.get('/detail/:id', controllerAdmin.show);
+router.get('/edit/:id', controllerAdmin.edit);
+router.put('/edit/:id', upload.single('imagen'), controllerAdmin.update);
+router.get('/delete/:id', controllerAdmin.destroy);
 
 module.exports = router;

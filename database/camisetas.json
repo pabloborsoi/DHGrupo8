@@ -1,42 +1,35 @@
 [
   {
+    "nombre": "qqq",
+    "descripcion": "qqqq",
+    "precio": "123",
+    "descuento": "0",
+    "oldImagen": "color-rojo-wave.jpg",
     "id": "1",
-    "nombre": "Moto honda c125c",
-    "descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    "precio": "150.000",
-    "descuento": "30",
-    "imagen": "color-rojo-wave.jpg"
+    "imagen": "camiseta-1660183897252.jpg"
   },
   {
-    "id": "11",
+    "id": 2,
     "nombre": "hola",
     "descripcion": "hola",
-    "precio": "1234",
+    "precio": "25",
     "descuento": "0",
-    "imagen": "camiseta-1659538216908.jpg"
+    "imagen": "camiseta-1659577663645.jpg"
   },
   {
-    "id": "111",
-    "nombre": "hola",
-    "descripcion": "hola",
-    "precio": "1231",
-    "descuento": "15",
-    "imagen": "camiseta-1659538233508.jpg"
+    "id": 3,
+    "nombre": "qqq",
+    "descripcion": "qqq",
+    "precio": "3",
+    "descuento": "0",
+    "imagen": "camiseta-1659578068064.jpg"
   },
   {
-    "id": "1111",
-    "nombre": "river",
-    "descripcion": "algodon",
-    "precio": "321",
+    "id": 4,
+    "nombre": "chau",
+    "descripcion": "chauchau",
+    "precio": "77",
     "descuento": "0",
-    "imagen": "camiseta-1659538352810.jpg"
-  },
-  {
-    "id": "11111",
-    "nombre": "boca",
-    "descripcion": "algodon",
-    "precio": "20000",
-    "descuento": "0",
-    "imagen": "camiseta-1659538499437.jpg"
+    "imagen": "camiseta-1660176247396.jpg"
   }
 ]

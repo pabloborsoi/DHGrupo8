@@ -6,6 +6,10 @@ const app = express();
 
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware');
 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
+
 app.use(session({
 	secret: "Shhh, It's a secret",
 	resave: false,
@@ -19,7 +23,7 @@ app.use(userLoggedMiddleware);
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('./public'));
-app.listen(3000, () => console.log('Servidor levantado en el puerto 3000'));
+app.listen(3030, () => console.log('Servidor levantado en el puerto 3030'));
 
 // Template Engine
 app.set('view engine', 'ejs');
@@ -33,4 +37,4 @@ const adminRoutes = require ('./routes/adminRoutes');
 app.use('/', mainRoutes);
 app.use(productRouter);
 app.use('/user', userRoutes);
-app.use(adminRoutes);
+app.use('/product', adminRoutes);

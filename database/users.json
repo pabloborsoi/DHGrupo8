@@ -54,5 +54,13 @@
   "password": "$2a$10$ulD2MV8JwZBKOyeR5J36fOnveQiXP4rgA2j7DYImwIY7MwLgbSCrq",
   "country": "Argentina",
   "avatar": "1659538412605_img.jpg"
+ },
+ {
+  "id": 8,
+  "fullName": "chau",
+  "email": "chau@hotmail.com",
+  "password": "$2a$10$VcQ8MaJNB1XZFy5irN28yeIjDEZP9cn2ZHiioPhZi4/DbXqN1PHwm",
+  "country": "Brasil",
+  "avatar": "1660176181887_img.jpg"
  }
 ]

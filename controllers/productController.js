@@ -7,7 +7,7 @@ const productController = {
         res.render('cart');
     },
     create: function (req, res) {
-        res.render('create');
+        res.render('product-create');
     }
 };
 

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+  <%- include('./partials/head.ejs') %>    
+<body>
+    <main class="container-fluid">
+      <%- include('./partials/header.ejs') %>
+      <!--Administrador de productos-->
+      <br>
+      <section class="row">
+        <article class="col-12 ">
+          <h2 class="display-4 text-white bg-info text-center pt-2">Administrador de Productos</h2>
+        </article>
+        <article class="col-12">
+          <a href="/administrar/create"><ion-icon name="add-circle-outline"></ion-icon>Agregar</a>
+        </article>
+        <article class="col-12" >
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ver</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% camisetas.forEach(camiseta => { %>
+              <tr>
+                <td><%= camiseta.id%> </td>
+                <td><%= camiseta.nombre%> </td>
+                <td><a href="/detail/<%= camiseta.id%> "> <ion-icon name="eye-outline"></ion-icon></a></td>
+                <td><a href="/edit/<%= camiseta.id%> "> <ion-icon name="pencil-outline"></ion-icon></a></td>
+                <td><a href="/delete/<%= camiseta.id%>"><ion-icon name="trash-outline"></ion-icon></a></td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table> 
+        </article>       
+      </section>
+      <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    </main>
+  </body>
+</html>

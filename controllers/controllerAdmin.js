@@ -4,11 +4,11 @@ const fs = require('fs');
 module.exports = {
     index: (req,res) =>{
         let camisetas = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/camisetas.json')));
-        res.render(path.resolve(__dirname, '../views/admin/administrar'), {camisetas});
+        res.render(path.resolve(__dirname, '../views/index'), {camisetas});
     },
     create: (req,res) =>{
         let camisetas = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/camisetas.json')));
-        res.render(path.resolve(__dirname, '../views/create'));
+        res.render(path.resolve(__dirname, '../views/product-create'));
     },
     save: (req,res) =>{
         let camisetas = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/camisetas.json')));
@@ -27,7 +27,7 @@ module.exports = {
         camisetas.push(nuevoProducto);
         let nuevoProductoGuardar = JSON.stringify(camisetas,null,2);
         fs.writeFileSync(path.resolve(__dirname,'../database/camisetas.json'), nuevoProductoGuardar);
-        res.redirect('/');
+        res.redirect('/administrar');
     },
     show: (req,res) =>{
         let camisetas = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/camisetas.json')));
@@ -44,7 +44,7 @@ module.exports = {
         let camisetas = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/camisetas.json')));
         const modoId = req.params.id;
         let camisetaEditar = camisetas.find(camiseta=> camiseta.id == modoId);
-        res.render(path.resolve(__dirname,'../views/edit'), {camisetaEditar});
+        res.render(path.resolve(__dirname,'../views/product-edit-form'), {camisetaEditar});
     },
     update: (req,res) =>{
         let camisetas = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/camisetas.json')));
@@ -58,7 +58,7 @@ module.exports = {
         })
         let camisetaActualizar = JSON.stringify(camisetasUpdate,null,2);
         fs.writeFileSync(path.resolve(__dirname,'../database/camisetas.json'),camisetaActualizar)
-        res.redirect('/');
+        res.redirect('/administrar');
     },
     destroy: (req,res) =>{
         let camisetas = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/camisetas.json')));
@@ -66,14 +66,6 @@ module.exports = {
         const camisetasFinal = camisetas.filter(camiseta => camiseta.id != camisetaDeleteId);
         let camisetasGuardar = JSON.stringify(camisetasFinal,null,2)
         fs.writeFileSync(path.resolve(__dirname, '../database/camisetas.json'),camisetasGuardar);
-        res.redirect('/');
+        res.redirect('/administrar');
     }
-
-
-
-
-
-
-
-
 }

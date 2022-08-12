@@ -9,4 +9,5 @@ const productController = require('../controllers/productController');
 productRouter.get('/cart', productController.cart);
 productRouter.get('/create', productController.create);
 
+
 module.exports = productRouter;
