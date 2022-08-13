@@ -6,8 +6,8 @@ const productController = {
     cart: function (req, res) {
         res.render('cart');
     },
-    product: function (req, res) {
-        res.render('product');
+    create: function (req, res) {
+        res.render('product-create');
     }
 };
 

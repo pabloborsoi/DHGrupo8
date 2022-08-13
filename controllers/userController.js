@@ -1,11 +1,13 @@
 const bcryptjs = require('bcryptjs');
-const {
-	validationResult
-} = require('express-validator');
+const { validationResult } = require('express-validator');
 
 const User = require('../models/User');
 
 const controller = {
+	indexUsers: function (req, res) {
+		const users = User.findAll();
+		return res.render('indexUsers',{users});
+	},
 	register: (req, res) => {
 		return res.render('userRegisterForm');
 	},
@@ -77,12 +79,59 @@ const controller = {
 			}
 		});
 	},
+	edit: (req, res) => {
+        // 1- CAPTURAMOS EL ID
+        // 2- RECORREMOS LOS USUARIOS Y BUSCAMOS LA COINCIDENCIA
+        // 3- RENDERIZAMOS LA VISTA CON EL USUARIO QUE COINCIDE
+        const idParam = req.params.id;
+        let userSelected = null
+        users.forEach(user => {
+            if (user.id == idParam) {
+                return userSelected = user
+            }
+        })
+		res.render("editUsers", {user: userSelected});
+	},
+    processEdit: (req, res) => {
+        // 1- CAPTURAMOS EL ID
+        // 2- CAPTURAMOS LA DATA INGRERSADA POR EL USUARIO
+        // 3- DEFINIMOS LA NUEVA VARIABLE CON LO QUE INGRESO EL USUARIO
+        // 4- EDITAMOS EL ELEMENTO CON IDPARAMS - 1 CON EL VALOR DE LA VARIABLE 
+        // 5- REDIRIGIMOS AL INDEX
+        const idParam = req.params.id;
+        const data = req.body;
+		let userEdited = {
+            id: idParam,
+			...data,
+		};
+		users[idParam - 1] = userEdited;
+        res.redirect('/indexUsers')
+    },
+	detail: (req, res) => {
+        // 1- CAPTURAMOS EL ID
+        // 2- RECORREMOS LOS USUARIOS Y BUSCAMOS LA COINCIDENCIA
+        // 3- RENDERIZAMOS LA VISTA CON EL USUARIO QUE COINCIDE
+        const idParam = req.params.id;
+        let userSelected = null
+        users.forEach(user => {
+            if (user.id == idParam) {
+                return userSelected = user
+            }
+        })
+
+		res.render("detailUsers", {user: userSelected});
+	},
 	profile: (req, res) => {
 		return res.render('userProfile', {
 			user: req.session.userLogged
 		});
 	},
-
+	delete: (req, res) => {
+        const idParam = req.params.id;
+        let usersArray = users.filter(user => user.id != idParam);
+        // res.redirect("/")
+        res.render('indexUsers', {users: usersArray })
+    },
 	logout: (req, res) => {
 		res.clearCookie('userEmail');
 		req.session.destroy();

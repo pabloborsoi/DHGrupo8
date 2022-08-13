@@ -22,5 +22,45 @@
   "password": "$2a$10$bwhEzQFvodWq4VLqyw7AzekQiI23yicpCrofJvyb.6z/MoTdCKS/2",
   "country": "Argentina",
   "avatar": "1659305203413_img.png"
+ },
+ {
+  "id": 4,
+  "fullName": "eze",
+  "email": "eze@hotmail.com",
+  "password": "$2a$10$Hu1tZaFH10doBNXmRQ55h.9qXu6J/sdfXBmyuWjjWm6bhkxDoovPG",
+  "country": "Argentina",
+  "avatar": "1659351524947_img.jpg"
+ },
+ {
+  "id": 5,
+  "fullName": "asd",
+  "email": "asd@hotmail.com",
+  "password": "$2a$10$Ckmdv0avZSVV6fYzjQ76GOMVaXt494oXCoHrjCS4bVwrdxCRGUsBG",
+  "country": "Argentina",
+  "avatar": "1659351735234_img.jpg"
+ },
+ {
+  "id": 6,
+  "fullName": "hola",
+  "email": "hola@hotmail.com",
+  "password": "$2a$10$WkqPJYHG19VbxaTPXcjemeuAz.ZKSbahpFPMdQspTLQcOoN4/Se0O",
+  "country": "Argentina",
+  "avatar": "1659363534502_img.jpg"
+ },
+ {
+  "id": 7,
+  "fullName": "jacqueline",
+  "email": "jacky@hotmail.com",
+  "password": "$2a$10$ulD2MV8JwZBKOyeR5J36fOnveQiXP4rgA2j7DYImwIY7MwLgbSCrq",
+  "country": "Argentina",
+  "avatar": "1659538412605_img.jpg"
+ },
+ {
+  "id": 8,
+  "fullName": "chau",
+  "email": "chau@hotmail.com",
+  "password": "$2a$10$VcQ8MaJNB1XZFy5irN28yeIjDEZP9cn2ZHiioPhZi4/DbXqN1PHwm",
+  "country": "Brasil",
+  "avatar": "1660176181887_img.jpg"
  }
 ]

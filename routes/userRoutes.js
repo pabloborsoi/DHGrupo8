@@ -10,6 +10,9 @@ const validations = require('../middlewares/validateRegisterMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
+// Cuadro con usuarios
+router.get('/indexUsers', usersController.indexUsers)
+
 // Formulario de registro
 router.get('/register', guestMiddleware, usersController.register);
 
