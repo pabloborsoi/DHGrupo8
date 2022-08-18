@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <%- include ("./partials/head.ejs")  %>
@@ -16,20 +17,38 @@
     <!-- <section class="nav-banner">
         <img id="banner-img" src="../images/travel-nomades-JO19K0HDDXI-unsplash.jpg" alt="Banner de Futbol">
     </section> -->
+    <script src="/database/camisetas.json"></script>
     <main>
         <!--Section Destacados--> 
         <h2>Destacados!</h2>
         <section class="seccion_main">
             <!--Section Item-->
-            <div class="articulo">
-                <img class="product-item_img" src="images/argentina2022.JPG" alt="Camiseta de Argentina">
-                <div class="product-info">
-                    <p class="info-price">$1.200</p>
-                    <p class="info-discount">25% OFF</p>
-                    <h3><b>Camiseta de Argentina</b></h3>
-                </div>
-            </div>
-            <div class="articulo">
+
+       <div class="articulo">
+          <% for(let i= 0; i < camisetas.length; i++){ %>
+            
+              <article class="producto">
+                <figure class="imagenProducto" >
+                  <img  src="images/camisetas/<%= camisetas[i].imagen%> " class="card-img-top w-100 d-block" alt="camiseta">
+                </figure>
+                  <% if (camisetas[i].descuento == 30) { %>
+                    <img class="descuento" src="img/promo30.png" alt="Descuento 30%">  
+                  <% }else if(camisetas[i].descuento == 15 ){ %>
+                    <img class="descuento" src="img/promo15.png" alt="Descuento 15%">
+                  <% } %>
+                <section class="detalle">
+                  <h5 class="card-title"><%= camisetas[i].nombre%></h5>
+                  <h5 class="card-title" >$  <%= camisetas[i].precio%> </h5>
+                  <p class="card-text descripcion"><%= camisetas[i].descripcion%> </p>
+                  <a href="#" class="btn btn-primary">Ver detalle</a>
+                </section>
+               
+              </article>        
+            
+          <% } %>
+        </div>
+           
+          <!--  <div class="articulo">
                 <img class="product-item_img" src="images/arsenal21-22.jpg" alt="Camiseta del Arsenal de Inglaterra">
                 <div class="product-info">
                     <p class="info-price">$1.200</p>
@@ -37,14 +56,7 @@
                     <h3><b>Camiseta del Arsenal de Inglaterra</b></h3>
                 </div>
             </div>
-            <div class="articulo">
-                <img class="product-item_img" src="images/bayernMunchen.JPG" alt="Camiseta del Bayern Munich">
-                <div class="product-info">
-                    <p class="info-price">$1.200</p>
-                    <p class="info-discount">25% OFF</p>
-                    <h3><b>Camiseta del Bayern Munich</b></h3>
-                </div>
-            </div>
+-->
         </section>
     </main>
 

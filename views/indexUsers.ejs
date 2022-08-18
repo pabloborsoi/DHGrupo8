@@ -19,7 +19,7 @@
 
     <section>
         <% for( let i = 0; i < users.length; i++ ) { %>
-            <a href="/users/detail/<%= users[i].id %> ">
+            <a href="/user/detail/<%= users[i].id %> ">
                 <p>ID: <%= users[i].id %> </p>
                 <p>Nombre: <%= users[i].fullName %></p>
                 <p>Mail: <%= users[i].email %></p>
@@ -33,7 +33,7 @@
 
     <!-- <a href="/users/register">Nuevo Usuario</a> -->
 
-    <form action="/users/register" method="get">
+    <form action="/user/register" method="get">
         <button type="submit">
             Nuevo Usuario
         </button>

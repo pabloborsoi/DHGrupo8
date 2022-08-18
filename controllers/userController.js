@@ -1,7 +1,9 @@
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
-
+const fs = require ('fs');
+const path = require('path');
 const User = require('../models/User');
+const users = User.findAll();
 
 const controller = {
 	indexUsers: function (req, res) {
@@ -105,7 +107,7 @@ const controller = {
 			...data,
 		};
 		users[idParam - 1] = userEdited;
-        res.redirect('/indexUsers')
+        res.redirect('/')
     },
 	detail: (req, res) => {
         // 1- CAPTURAMOS EL ID
@@ -136,7 +138,15 @@ const controller = {
 		res.clearCookie('userEmail');
 		req.session.destroy();
 		return res.redirect('/');
-	}
+	},
+	destroy: (req,res) =>{
+        let usuarios = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/users.json')));
+        const usuariosDeleteId = req.params.id;
+        const usuariosFinal = usuarios.filter(usuarios => usuarios.id != usuariosDeleteId);
+        let usuariosGuardar = JSON.stringify(usuariosFinal,null,2)
+        fs.writeFileSync(path.resolve(__dirname, '../database/users.json'),usuariosGuardar);
+        res.redirect('/');
+    }
 }
 
 module.exports = controller;
