@@ -10,6 +10,9 @@ const validations = require('../middlewares/validateRegisterMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
+// Cuadro con usuarios
+router.get('/indexUsers', usersController.indexUsers)
+
 // Formulario de registro
 router.get('/register', guestMiddleware, usersController.register);
 
@@ -24,6 +27,18 @@ router.post('/login', usersController.loginProcess);
 
 // Perfil de Usuario
 router.get('/profile/', authMiddleware, usersController.profile);
+
+// Detalle Usuario
+router.get('/detail/:id', usersController.detail);
+
+// Editar Usuario
+router.get('/edit/:id', usersController.edit);
+
+//Guardar editar uduario
+router.put("/edit/:id", usersController.processEdit)
+
+//Eliminar usuario
+router.delete("/delete/:id", usersController.destroy)
 
 // Logout
 router.get('/logout/', usersController.logout);
