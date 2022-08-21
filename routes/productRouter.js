@@ -8,6 +8,7 @@ const productController = require('../controllers/productController');
 // CONFIFURACION DE RUTAS Y METODOS
 productRouter.get('/cart', productController.cart);
 productRouter.get('/create', productController.create);
+productRouter.get('/listadoProductos', productController.listado);
 
 
 module.exports = productRouter;

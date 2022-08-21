@@ -3,6 +3,7 @@ const { validationResult } = require('express-validator');
 const fs = require ('fs');
 const path = require('path');
 const User = require('../models/User');
+const { Op } = require("sequelize");
 const users = User.findAll();
 
 const controller = {
