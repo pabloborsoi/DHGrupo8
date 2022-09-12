@@ -1,73 +1,98 @@
 <!doctype html>
 <html lang="es">
-  <%- include('./partials/head') %>
-  <body>
+    <%- include('./partials/head') %>
+        <body>
     <header>
 
-      <%- include ("./partials/header.ejs")  %>
+    <%- include ("./partials/header.ejs")  %>
       
-  </header>
+    </header>
     <main class="container-fluid">
     
-        
-        <!-- Cuerpo principal -->
-        <section class="row">
-          <article class="col-12  card" >
-                  <div class="card-body">
-                    <h2 class="display-4 text-white bg-info text-center pt-2">Actualizar un Producto</h2>
-                  </div>
-          </article>
-      </section>
-            <div class="container">
-                <div class="row" >
-                    <div class="col-8 mx-auto bg-light ">
-                        <div class="create-form">
-                            <form action="/edit/<%= camisetaEditar.id%>?_method=PUT
-                            " method="POST" enctype="multipart/form-data" >
+                <div>
+                    <h2>Actualizar un Producto</h2>
+                </div>
+    <section>
+<div class="errores">
+    <ul></ul>
+</div>
+                    <div class="create-form">
+                            <form action="/product/json/edit/<%= camisetaEditar.id%>?_method=PUT" method="POST" enctype="multipart/form-data" >
+                               
+                                <% if (locals.mensajeError) { %>
+                                    <p class="error"><%= mensajeError %></p>
+                                    <% } %>
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" required="required" value="<%= camisetaEditar.nombre%>">
+                                    <label><b>Nombre de Camiseta:</b></label>
+                                    <input 
+                                    type="text"  
+                                    id="name"
+                                    name="nombre" 
+                                    placeholder="Nombre" 
+                                    value= "<%= locals.errors && errors.nombre ? 'is-invalid' : null %>">
+                                    <% if (locals.errors && errors.nombre) { %>
+                                        <p class="error"><%= errors.nombre.msg %></p>
+                                    <% } %>
                                 </div>	
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="descripcion" placeholder="Descripción" required="required" value="<%= camisetaEditar.descripcion%>">
+                                    <label><b>Descripcion del Producto:</b></label>
+                                    <input 
+                                    type="text" 
+                                    name="descripcion"
+                                    id ="descripcion"  
+                                    placeholder="Descripción" 
+                                    value= "<%= locals.errors && errors.descripcion ? 'is-invalid' : null %>">
+                                    <% if (locals.errors && errors.descripcion) { %>
+                                        <p class="error"><%= errors.descripcion.msg %></p>
+                                    <% } %>
                                 </div>
+                                
                                 <div class="form-group">
-                                    <input type="number" class="form-control" name="precio" placeholder="Indique el precio" required="required" value="<%= camisetaEditar.precio%>">
+                                    <label><b>Precio:</b></label>
+                                    <input 
+                                    type="number" 
+                                    name="precio" 
+                                    id="precio"
+                                    placeholder="Indique el precio" 
+                                    value= "<%= locals.errors && errors.precio ? 'is-invalid' : null %>"> 
+                                    <% if (locals.errors && errors.precio) { %>
+                                        <p class="error"><%= errors.precio.msg %></p>
+                                    <% } %>                                  
                                 </div>
-                                <div class="form-group">
-                                    <select  name="descuento" class="custom-select" id="validationCustom04" required>
-                                      <option disabled value="#">Seleccione un descuento"</option>
-                                      <option value="0" <%= camisetaEditar.descuento == 0 ? "selected" : null %>
-                                        >Sin descuento</option>
-                                      <option value="15" <%= camisetaEditar.descuento == 15 ? "selected" : null %>>15%</option>
-                                      <option value="30" <%= camisetaEditar.descuento == 30 ? "selected" : null %>>30%</option>
-                                    </select>
-                                </div>
+
                                 <!--Aquí solicito la imagen-->
                                 <div class="custom-file">
-                                    <figure class="form-group">
-                                        <img  class="w-100" src="/images/camisetas/<%= camisetaEditar.imagen%>" alt="camiseta <%= camisetaEditar.nombre%>">
-                                    </figure>
+                                    <label><b> Foto: </b></label>
                                     <input type="hidden"  name="oldImagen"  value="<%= camisetaEditar.imagen%>">
                                     <!--De esta forma logro conservar y que viaje la imagen anterior de esta forma evito que el usuario seleccione una imagen nuevamente, ( si no lo desea) -->
-                                    <input type="file" name="imagen" >
+                                    <input type="file" name="imagen" id="imagen">
                                     <!--<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="imagen" required value=""> 
-
+    
                                     <label class="custom-file-label" for="inputGroupFile01">Seleccione una imagen...</label>-->
-                                  </div>
+                                    <img  
+                                    class="form-control <%= locals.errors && errors.imagen ? 'is-invalid' : null %>" >
+                                    <% if (locals.errors && errors.imagen) { %>
+                                    <div class="error">
+                                    <%= errors.imagen.msg %> 
+                                    </div>
+                                    <% } %>
+                                </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn btn-info">Actualizar</button>
-                                    <a href="/administrar" class="btn btn-danger">Volver</a>
+                                    <button type="submit"> Actualizar </button>
+                                    <button><a href="/"> Volver </a></button>
                                 </div>
                                 
                             </form>
                     </div>                        
-                    </div>
-                </div>
-              </main>      
+    </section>              
+    </main>      
                 <footer class="footer">
 
-                  <%- include ("./partials/footer.ejs")  %>
+    <%- include ("./partials/footer.ejs")  %>
           
-              </footer>
-          </body>
-          </html>
+                </footer>
+                <script src="/scripts/editarProducto.js"></script>
+        </body>
+        </html>

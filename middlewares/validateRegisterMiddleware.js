@@ -10,7 +10,7 @@ module.exports = [
 	body('country').notEmpty().withMessage('Tienes que elegir un país'),
 	body('avatar').custom((value, { req }) => {
 		let file = req.file;
-		let acceptedExtensions = ['.jpg', '.png', '.gif'];
+		let acceptedExtensions = ['.jpeg','.jpg', '.png', '.gif'];
 
 		if (!file) {
 			throw new Error('Tienes que subir una imagen');

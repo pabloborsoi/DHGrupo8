@@ -13,12 +13,16 @@ module.exports = (sequelize, DataTypes) => {
         id_talle: {
             type: DataTypes.INTEGER
         },
-        id_categorias: {
+        id_categoria: {
             type: DataTypes.INTEGER
+        },
+        imagen: {
+            type: DataTypes.STRING(40)
         },
         precio: {
             type: DataTypes.INTEGER
         },
+        
     }, 
     {
         tableName: "productos",

@@ -1,26 +1,24 @@
 [
   {
-    "id": "1",
     "nombre": "Camiseta de Argentina",
     "descripcion": "Camiseta de Argentina",
-    "precio": "$1200",
-    "descuento": "25%",
+    "precio": "1200",
+    "oldImagen": "camisetaArgentina.JPG",
+    "id": "1",
     "imagen": "camisetaArgentina.JPG"
   },
   {
     "id": 2,
     "nombre": "Camiseta de Colombia",
     "descripcion": "Camiseta de Colombia",
-    "precio": "$1300",
-    "descuento": "15%",
+    "precio": "1300",
     "imagen": "camisetaColombia.jpg"
   },
   {
     "id": 3,
     "nombre": "Camiseta de Mexico",
     "descripcion": "Camiseta de Mexico",
-    "precio": "$1400",
-    "descuento": "30%",
+    "precio": "1400",
     "imagen": "camisetaMexico.jpg"
   },
   {
@@ -28,7 +26,59 @@
     "nombre": "chau",
     "descripcion": "chauchau",
     "precio": "77",
-    "descuento": "0",
     "imagen": "camiseta-1660176247396.jpg"
+  },
+  {
+    "nombre": "boca",
+    "descripcion": "Adidas",
+    "precio": "101",
+    "oldImagen": "camiseta-1661951376501.jpg",
+    "id": "5",
+    "imagen": "camiseta-1661951376501.jpg"
+  },
+  {
+    "nombre": "mmm",
+    "descripcion": "mmm",
+    "precio": "2",
+    "oldImagen": "camiseta-1661993813956.png",
+    "id": "51",
+    "imagen": "camiseta-1662200867474.jpeg"
+  },
+  {
+    "id": "511",
+    "nombre": "aaa",
+    "descripcion": "aaa",
+    "precio": "2",
+    "imagen": "camiseta-1662118870994.jpeg"
+  },
+  {
+    "nombre": "Sillon",
+    "descripcion": "Sillon",
+    "precio": "1",
+    "oldImagen": "camiseta-1662200075672.jpeg",
+    "id": "5111",
+    "imagen": "camiseta-1662200843282.jpeg"
+  },
+  {
+    "id": "51111",
+    "nombre": "aa",
+    "descripcion": "aa",
+    "precio": "1",
+    "imagen": "camiseta-1662204004609.jpeg"
+  },
+  {
+    "id": "511111",
+    "nombre": "a",
+    "descripcion": "a",
+    "precio": "1",
+    "imagen": "camiseta-1662204093254.jpeg"
+  },
+  {
+    "nombre": "ultimo",
+    "descripcion": "ultimoultimoultimoultimoultimo",
+    "precio": "10",
+    "oldImagen": "camiseta-1662249079609.jpg",
+    "id": "5111111",
+    "imagen": "camiseta-1662993522846.jpg"
   }
 ]

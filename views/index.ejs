@@ -27,22 +27,16 @@
        <div class="articulo">
           <% for(let i= 0; i < camisetas.length; i++){ %>
             
-              <article class="producto">
-                <figure class="imagenProducto" >
-                  <img  src="images/camisetas/<%= camisetas[i].imagen%> " class="card-img-top w-100 d-block" alt="camiseta">
+              <article class="">
+                <figure>
+                  <img src="images/camisetas/<%= camisetas[i].imagen%>" class="product-item_img"  alt="camiseta">
                 </figure>
-                  <% if (camisetas[i].descuento == 30) { %>
-                    <img class="descuento" src="img/promo30.png" alt="Descuento 30%">  
-                  <% }else if(camisetas[i].descuento == 15 ){ %>
-                    <img class="descuento" src="img/promo15.png" alt="Descuento 15%">
-                  <% } %>
-                <section class="detalle">
+                <section class="product-info">
                   <h5 class="card-title"><%= camisetas[i].nombre%></h5>
-                  <h5 class="card-title" >$  <%= camisetas[i].precio%> </h5>
                   <p class="card-text descripcion"><%= camisetas[i].descripcion%> </p>
-                  <a href="#" class="btn btn-primary">Ver detalle</a>
-                </section>
-               
+                  <h5 class="card-title">$<%= camisetas[i].precio%> </h5>
+                  <a href="/product/json/detail/<%= camisetas[i].id %>" class="btn btn-primary">Ver detalle</a>
+                </section>  
               </article>        
             
           <% } %>

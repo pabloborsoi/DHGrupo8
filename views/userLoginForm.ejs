@@ -3,61 +3,75 @@
 <%- include('partials/head'); %>
 <body>
 	<header>
-
-        <%- include ("./partials/header.ejs")  %>
-        
-    </header>
-	
+		
+		<%- include ("./partials/header.ejs")  %>
+	</header>
+	<!--Front-End-Errores-->	
 	<!-- Login-Form -->
-	<section class="login-title">
-	<div class="container my-5">
-			<div class="col-md-10">
-				<h2>Formulario de Login</h2>
-	</section>
-				<form method="POST" action="/user/login">
-					<div class="row">
-						<div class="col-md-6 my-2">
-							<div class="form-group">
-								<section class="login-data">
-								<label><b>Correo electrónico:</b></label>
-								<input type="text" name="email" class="form-control">
-								<% if (locals.errors && errors.email) { %>
-									<div class="text-danger">
-										<%= errors.email.msg %>
-									</div>
-								<% } %>
-							</div>
-						</div>
-						<div class="col-md-6 my-2">
-							<div class="form-group">
-								<label><b>Password:</b></label>
-								<input type="password" name="password" class="form-control">
-								<div class="invalid-feedback">
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 my-2">
-							<div class="form-group form-check">
-								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input" name="remember_user">Recordar mi usuario
-								</label>
-							</div>
-						</div>
-						<div class="col-12 my-3">
-							<button type="submit" class="btn btn-primary">Loguearme</button>
-						</section>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
+
+	<div class="errores">
+		<ul></ul>
 	</div>
+	
+	<div class="carga">
+		<section class="login-title">
+			<h2>Formulario de Login</h2>
+		</section>
+		<form method="POST" action="/user/json/login" class="login">
+			<!--Esta parte es la llamada a los errores-->
+			<% if (locals.mensajeError) { %>
+				<p class="error"><%= mensajeError %></p>
+				<% } %>
+				<!--form-group y login-data-->
+				<p>
+					<label><b>Correo electrónico:</b></label>
+					<input 
+					type="text" 
+								name="email"
+								placeholder="Ingresa tu correo acá"
+								id="correo" 
+								class="correo"
+								value="<%= locals.oldData ? oldData.email : null %>"
+                                >
+                            </p>
+                                <% if (locals.errors && errors.email) { %>
+                                <p class="error"><%= errors.email.msg %></p>
+                                <% } %>
+
+						    <p>
+								<label><b>Password:</b></label>
+								<input 
+								type="password" 
+								name="password"
+								placeholder="Ingresa tu Contraseña" 
+								id="clave"
+								class="password"
+								/>
+							</p>
+							<% if (locals.errors && errors.password) { %>
+								<p class="error"><%= errors.password.msg %></p>
+								<% } %>
+						
+								<input 
+								type="checkbox" 
+								class="recordarClave" 
+								name="recordarClave"
+								id="recordarClave"
+								/><label for="recordarClave">Recordame</label>
+						
+						<div class="buttons">
+							<button type="submit">Loguearme</button>
+						</div>
+					
+				</form>
+	</div>			
 	<!-- //Login-Form -->
 	
 	<footer class="footer">
 
         <%- include ("./partials/footer.ejs")  %>
 
-    </footer>
+	</footer>
+	<script src="/scripts/login.js"></script>
 </body>
 </html>

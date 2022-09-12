@@ -30,14 +30,16 @@
     </section>
 
     <form action="../edit/<%= user.id %>" method="get">
-        <button class="editar type="submit">
+        <button 
+        class="editar" 
+        type="submit">
             Editar
         </button>
     </form>
     <form action="../delete/<%= user.id %>?_method=delete" method="post">
-        <button class="eliminar" type="submit">
-            Eliminar
-        </button>
+        <button 
+        class="eliminar" 
+        type="submit">Eliminar</button>
     </form>
     <footer class="footer">
 

@@ -1,10 +1,11 @@
+const res = require('express/lib/response');
 const bcryptjs = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const fs = require ('fs');
 const path = require('path');
 const User = require('../models/User');
 const { Op } = require("sequelize");
-const { log } = require('console');
+let db = require ("../database/models");
 const users = User.findAll();
 
 const controller = {
@@ -46,12 +47,21 @@ const controller = {
 
 		let userCreated = User.create(userToCreate);
 
-		return res.redirect('/user/login');
+		return res.redirect('/user/json/login');
 	},
 	login: (req, res) => {
 		return res.render('userLoginForm');
 	},
 	loginProcess: (req, res) => {
+		const resultValidation = validationResult(req);
+
+		if (resultValidation.errors.length > 0) {
+			return res.render('userLoginForm', {
+				errors: resultValidation.mapped(),
+				oldData: req.body
+			});
+		}
+
 		let userToLogin = User.findByField('email', req.body.email);
 		
 		if(userToLogin) {
@@ -64,24 +74,26 @@ const controller = {
 					res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
 				}
 
-				return res.redirect('/user/profile');
+				return res.redirect('/user/json/profile');
 			} 
-			return res.render('userLoginForm', {
+			return res.render('userLoginForm');
+			/*, {
 				errors: {
 					email: {
 						msg: 'Las credenciales son inválidas'
 					}
 				}
-			});
+			});*/
 		}
 
-		return res.render('userLoginForm', {
+		return res.render('userLoginForm')
+		/*, {
 			errors: {
 				email: {
 					msg: 'No se encuentra este email en nuestra base de datos'
 				}
 			}
-		});
+		});*/
 	},
 	edit: (req, res) => {
         // 1- CAPTURAMOS EL ID
@@ -109,7 +121,7 @@ const controller = {
 			...data,
 		};
 		users[idParam - 1] = userEdited;
-        res.redirect('/')
+        res.redirect('/user/json/indexUsers')
     },
 	detail: (req, res) => {
         // 1- CAPTURAMOS EL ID
@@ -147,9 +159,138 @@ const controller = {
         const usuariosFinal = usuarios.filter(usuarios => usuarios.id != usuariosDeleteId);
         let usuariosGuardar = JSON.stringify(usuariosFinal,null,2)
         fs.writeFileSync(path.resolve(__dirname, '../database/users.json'),usuariosGuardar);
-        res.redirect('/');
-		console.log();
-    }
+        res.redirect('/user/json/indexUsers');
+    },
+
+
+
+
+	///////////////CRUD  USUARIO SQL
+
+
+
+
+	crear: function (req, res) {
+		//sale del alias Genero, muestra todos los generos
+		db.Usuarios.findAll()
+		.then(function(usuario){
+		return res.render("creacionUsuarios", {usuario:usuario});
+		})
+	},
+	listado: function(req,res){
+
+		db.Usuarios.findAll()
+		.then(function(usuarios){
+			
+			res.render("listadoUsuarios", {usuarios:usuarios}) 
+	})
+	},
+	guardado: function (req, res) {
+		db.Usuarios.create({
+			//nombre de las columnas de las bases de dato(ingles)
+			//nombres req.body.(name del formulario)
+			fullname: req.body.fullname,
+			mail: req.body.mail,
+			pais: req.body.pais,
+			pass: req.body.pass
+			//avatar: req.body.avatar
+		});
+		res.redirect("/user/usuarios/listado");
+	},
+	detalle: function (req, res) {
+		//ByPk sale del id de la url
+		db.Usuarios.findByPk(req.params.id, {
+			//los nombres son de las relaciones (as)
+			include: [{association: "carrito"}]
+		})
+			.then(function(usuario){
+				res.render('detalleUsuarios', {usuario:usuario});
+			})
+		},
+		editar: function (req, res) {
+			//toma el id del url
+		let pedidoUsuario = db.Usuarios.findByPk(req.params.id);
+//			let pedidoTalle = db.Talle.findAll();
+	        Promise.all([pedidoUsuario])
+//			.then(function([producto, talle]) {
+			.then(function(usuario) {
+				res.render('editarUsuario', {usuario:usuario});
+			})
+		},
+		actualizar: function (req, res) {
+			db.Usuarios.update({
+				//nombre de (izquiera)las columnas de las bases de dato(ingles)
+				//nombres req.body.(name del formulario)
+			fullname: req.body.fullname,
+			pais: req.body.pais,
+			mail: req.body.mail,
+			pass: req.body.pass
+			//FALTA AVATAR
+			}, {
+			where: {
+				id: req.params.id
+			}
+			});
+	
+			res.redirect('/usuarios/' + req.params.id)
+		},
+		borrar: function(req, res) {
+			db.Usuarios.destroy({
+				where: {
+					id: req.params.id
+				}
+			})
+			res.redirect('/listadoUsuarios');
+		},
+
+
+		//MUESTRA LA VISTA DE LOGIN
+		loginSQL: function (req, res) {
+			res.render("loginSQL");
+		  },
+		
+		  //PROCESA EL LOGIN DE USUARIO
+		  procesarLoginSQL: function (req, res) {
+			//VALIDACION BACKEND
+			const resultValidation = validationResult(req);
+		
+			if (resultValidation.errors.length > 0) {
+			  return res.render("loginSQL", {
+				errors: resultValidation.mapped(),
+				oldData: req.body,
+			  });
+			}
+		
+			//sequelize ENCONTRAR USUARIO POR MAIL
+			db.Usuarios.findOne({
+			  where: { email: req.body.email },
+			})
+			  .then((encontrado) => {
+				//VALIDACION DEL MAIL CONTRA LA BASE
+				if (encontrado == null) {
+				  let mensajeError = "El mail no está registrado";
+				  res.render("users/login", { mensajeError });
+				} else if (
+				  encontrado.id_usuario != undefined &&
+				  bcrypt.compareSync(req.body.password, encontrado.password)
+				) {
+				  //LOGUEO EXITOSO
+				  req.session.usuarioLogueado = encontrado;
+				  // (si el checkbox de recordar usuario no está tildado, debería llegar como "undefined")
+				  if (req.body.recordarClave != undefined) {
+					res.cookie('recordame',
+					encontrado.id_usuario,
+					{maxAge:6000000})
+				  }
+				  res.redirect("/");
+				} else {
+				  // LOGUEO ERRONEO
+				  let mensajeError = "Usuario o clave incorrectos ";
+				  res.render("users/login", { mensajeError });
+				}
+			  })
+			  .catch((error) => res.send(error));
+		  },
 }
 
 module.exports = controller;

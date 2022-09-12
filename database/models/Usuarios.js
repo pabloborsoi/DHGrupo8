@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
         avatar: {
             type: DataTypes.STRING(40)
         },
+        pass:{
+            type: DataTypes.STRING(40)
+        }
     }, 
     {
         tableName: "usuarios",
