@@ -4,6 +4,7 @@ const fs = require ('fs');
 const path = require('path');
 const User = require('../models/User');
 const { Op } = require("sequelize");
+const { log } = require('console');
 const users = User.findAll();
 
 const controller = {
@@ -147,6 +148,7 @@ const controller = {
         let usuariosGuardar = JSON.stringify(usuariosFinal,null,2)
         fs.writeFileSync(path.resolve(__dirname, '../database/users.json'),usuariosGuardar);
         res.redirect('/');
+		console.log();
     }
 }
 
