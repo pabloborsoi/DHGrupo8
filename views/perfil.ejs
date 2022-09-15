@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+    <body >
+    <head>
+
+        <%- include ("./partials/head.ejs")  %>
+    
+    </head>
+    <header>
+    
+        <%- include ("./partials/header.ejs")  %>
+        
+    </header>
+
+    <h1>PERFIL</h1> 
+    <div>
+
+    
+    <section>
+        <div> 
+            <img  src="/images/avatars/<%=encontrado.avatar%>"  alt="foto del producto" class="fotoproducto"/>
+            </div>
+
+        <div class="description">
+            <div class="datos">Nombre: <%=encontrado.fullname%>   </div>
+            <div class="datos">Mail: <%=encontrado.mail%>  </div>
+            <div class="datos">Pais:<%=encontrado.pais%></div>
+            </div>
+            </div>
+            
+        <div>
+                <div class="contenedor-editar"><a class="boton-editar" href="/user/editar/<%=encontrado.id_usuario%>"> EDITAR PERFIL </a></div>
+                <div class="contenedor-borrar"><a class="boton-borrar" href="/user/borrar/<%=encontrado.id_usuario%>"> BORRAR CUENTA </a></div>
+                
+            
+        </div>
+    </div>
+        
+    </section>
+    <footer class="footer">
+        
+  
+      <%- include ("./partials/footer.ejs")  %>
+  
+  </footer>
+</body>
+</html>

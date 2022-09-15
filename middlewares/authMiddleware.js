@@ -1,6 +1,6 @@
 function authMiddleware(req, res, next) {
-	if (!req.session.userLogged) {
-		return res.redirect('/user/json/login');
+	if (!req.session.usuarioLogueado) {
+		return res.redirect('/user/login');
 	}
 	next();
 }

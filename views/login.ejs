@@ -1,41 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-  <%- include ('./partials/head')%>
+<html>
+    <body>
 
-  <body>
-    <%- include ('./partials/header') %>
+    
+<head>
 
+    <%- include ("./partials/head.ejs")  %>
+
+</head>
+<header>
+
+    <%- include ("./partials/header.ejs")  %>
+    
+</header>
     <main>
-      <Div class="form-container">
-        <div class="login-container">
-
-          <div class="errores">
+      <Div>
+        <div>
+          <div>
             <ul></ul>
           </div>
-
           <h2>INGRESA</h2>
-          <form action="/user/usuarios/loginSQL" method="post" class="formulete">
+          <form action="/user/login" method="post" class="formulete">
             <% if (locals.mensajeError) { %>
             <p class="error"><%= mensajeError %></p>
             <% } %>
             <p>
               <input
                 type="text"
-                name="email"
+                name="mail"
                 placeholder="Ingresa tu correo acá"
                 id="correo"
                 class="correo"
-                value="<%= locals.oldData ? oldData.email : null %>"
+                value="<%= locals.oldData ? oldData.mail : null %>"
               />
             </p>
-            <% if (locals.errors && errors.email) { %>
-            <p class="error"><%= errors.email.msg %></p>
+            <% if (locals.errors && errors.mail) { %>
+            <p class="error"><%= errors.mail.msg %></p>
             <% } %>
 
             <p>
               <input
                 type="password"
-                name="password"
+                name="pass"
                 placeholder="Ingresa tu Contraseña"
                 id="clave"
                 class="password"
@@ -57,8 +62,11 @@
         </div>
       </Div>
     </main>
+    <footer class="footer">
+      <script src="/scripts/loginSQL.js"></script>
 
-    <%- include ('./partials/footer') %>
-    <script src="/scripts/loginSQL.js"></script>
-  </body>
+    <%- include ("./partials/footer.ejs")  %>
+
+</footer>
+</body>
 </html>

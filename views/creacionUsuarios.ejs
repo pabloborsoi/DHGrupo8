@@ -17,23 +17,33 @@
     <ul></ul>
 </div>
 
-<h1>Crear Usuario</h1>
+<h1>Registrar Usuario</h1>
 
-<form acction="/user/usuarios/crear" method="POST">
+<form acction="/user/crear" method="POST">
     <div>
         <label for="">Nombre Completo</label>
         <input 
         type="text" 
         name="fullname"
-        id="nombre">
+        id="nombre"
+        value="<%= locals.oldData ? oldData.fullname : null %>">
     </div>
+    <% if (locals.errors && errors.fullname) { %>
+        <p class="error"> <%= errors.fullname.msg %>  </p>
+    <% } %>
+
     <div>
         <label for="">Mail</label>
         <input 
         type="text" 
         name="mail"
-        id="correo">
+        id="correo"
+        value="<%= locals.oldData ? oldData.mail: null %>">
     </div>
+    <% if (locals.errors && errors.mail) { %>
+        <p class="error"> <%= errors.mail.msg %>  </p>
+    <% } %>
+
     <div>
         <label for="">Pais</label>
         <select 
@@ -55,11 +65,29 @@
     <div>
         <label for="">Contraseña</label>
         <input 
-        type="text" 
+        type="password" 
         name="pass"
         id="clave">
     </div>
+    <% if (locals.errors && errors.pass) { %>
+        <p class="error"> <%= errors.pass.msg %>  </p>
+    <% } %>
     <!--VER AVATAR-->
+
+    <div class= "carga-foto">
+        <label for="foto">
+            Foto:
+        </label>
+        <input 
+        type="file" 
+        id = "foto" 
+        name="avatar" 
+        placeholder="Indicar imagen" >
+        <% if (locals.errors && errors.avatar) { %>
+            <p class="error"> <%= errors.avatar.msg %></p>
+        <% } %>
+    </div>
+
     <button type="submit">Regristrame</button>
 </form>
 <footer class="footer">

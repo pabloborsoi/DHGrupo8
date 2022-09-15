@@ -6,7 +6,10 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncremenct: true,
             
-        }, 
+        },
+        nombre_producto: {
+            type: DataTypes.STRING(40) 
+        },
         id_marca: {
             type: DataTypes.INTEGER
         },

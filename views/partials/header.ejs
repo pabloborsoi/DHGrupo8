@@ -7,24 +7,27 @@
         </div>
         <div class="bottom-container__top-right-menu">
             <ul>
-                <li><a href="/"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="/product/crear"><i class="fa-solid fa-pen-ruler">CREAR PRODUCTO</i></a></li>
+                <li><a href="/product/listado"><i>PRODUCTOS</i></a></li>
+                <li><a href="/user/listado"><i>USUARIOS</i></a></li>
+
                 <% if (locals.isLogged) { %>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="/images/avatars/<%= locals.userLogged.avatar %>" width="40" style="border-radius: 100%;">
-                            Hi <%= locals.userLogged.fullName %> 
-                            <li><a href="/product/json/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                            <li><a href="/product/json/create"><i class="fa-solid fa-pen-ruler"></i></a></li>
+                        <a href="/users/perfil/<%= locals.usuarioLogueado.id_usuario %> ">
+                            <img src="/images/avatars/<%= locals.usuarioLogueado.avatar %>" width="40" style="border-radius: 100%;">
+                            Hi <%= locals.usuarioLogueado.fullName %> 
+                            <li><a href="/product/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/user/json/profile">My profile</a>
+                            <a class="dropdown-item" href="/user/perfil">My profile</a>
                             <li><hr class="dropdown-divider"></li>
-                            <a href="/user/json/logout">Logout</a>
+                            <a href="/user/logout">Logout</a>
+                            <!--ACA ESTAEBA EL LOG OUT-->
                         </ul>
                     </li>
-                <% } else { %>
-                    <li class="nav-item"><a class="nav-link" href="/user/json/login">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/user/json/register">Register</a></li>
+                    <% } else { %>
+                    <li class="nav-item"><a class="nav-link" href="/user/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/user/crear">Register</a></li>
                 <% } %>
                 <!-- <li><a href="/favorite"><i class="fa-solid fa-heart"></i></a></li> -->
             </ul>

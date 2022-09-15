@@ -19,27 +19,36 @@
 
 <h1>Cargar camiseta</h1>
 
-<form acction="/product/productos/crear" method="POST">
+<form acction="/product/crear" method="POST" enctype="multipart/form-data">
+    
+
     <div>
-        <label for="">Nombre</label>
+        <label>
+            Nombre:
+        </label>
         <input 
         type="text" 
-        name="producto"
-        id="name">
+        id= "name" 
+        name="nombre" placeholder="Indicar nombre" 
+        value="<%= locals.oldData ? oldData.nombre: null %>">
+        <% if (locals.errors && errors.nombre) { %>
+            <p class="error"> <%= errors.nombre.msg %>  </p>
+        <% } %>
     </div>
+
     <div>
-        <label for="">Marca</label>
-        <select 
-        name="marca">
-            <% for (let i = 0; i < marca.length; i ++) {%>
-                <!--imprime el id del nombre q nos interesa-->
-                <option value="<%=marca[i].id%>">
-                    <!--nombres de los datos en la base de dato-->
-                    <%=marca[i].nombre_marca%> 
-                </option>
-                <% } %>
-        </select> 
+        <label>
+            Marca:
+        </label>
+        <select name="marca" id="marca" >
+            <option value="" disabled selected>- Seleccione Marca - </option>
+            <% for( let i = 0; i < marca.length; i++ ) { %>
+                <option value="<%= marca[i].id_marca %>"><%= marca[i].nombre_marca %></option>
+            <% } %>
+        </select>
     </div>
+
+
     <div>
         <label for="">Precio</label>
         <input 
@@ -48,31 +57,48 @@
         id="precio">
     </div>
     <div>
-        <label for="">Categoria</label>
-        <select 
-        name="categoria">
-            <% for (let i = 0; i < categoria.length; i ++) {%>
-                <!--imprime el id del nombre q nos interesa-->
-                <option value="<%=categoria[i].id%>">
-                    <!--nombres de los datos en la base de dato-->
-                    <%=categoria[i].nombre_categoria%> 
-                </option>
-                <% } %>
-        </select> 
-    </div>
+
+       
     <div>
-        <label for="">Talle</label>
-        <select 
-        name="talle">
-            <% for (let i = 0; i < talle.length; i ++) {%>
-                <!--imprime el id del nombre q nos interesa-->
-                <option value="<%=talle[i].id%>">
-                    <!--nombres de los datos en la base de dato-->
-                    <%=talle[i].nombre_talle%> 
-                </option>
-                <% } %>
-        </select> 
+        <label>
+            Categoria:
+        </label>
+        <select name="categoria" id="categoria"  >
+            <option value="" disabled selected>- Seleccione Categoria - </option>
+            <% for( let i = 0; i < categoria.length; i++ ) { %>
+                <option value="<%= categoria[i].id_categoria %>"><%= categoria[i].nombre_categoria %></option>
+            <% } %>
+        </select>
     </div>
+
+
+    <div>
+        <label>
+            Talle:
+        </label>
+        <select name="talle" id="talle"  >
+            <option value="" disabled selected>- Seleccione Talle - </option>
+            <% for( let i = 0; i < talle.length; i++ ) { %>
+                <option value="<%= talle[i].id_talle %>"><%= talle[i].nombre_talle %></option>
+            <% } %>
+        </select>
+    </div>
+
+    <div class= "carga-foto">
+        <label for="foto">
+            Foto:
+        </label>
+        <input 
+        type="file" 
+        id = "foto" 
+        name="imagen" 
+        placeholder="Indicar imagen" >
+        <% if (locals.errors && errors.imagen) { %>
+            <p class="error"> <%= errors.imagen.msg %></p>
+        <% } %>
+    </div>
+
+
     <button type="submit">Crear</button>
 </form>
 <footer class="footer">

@@ -2,21 +2,23 @@
     <body>
 
     
-<head>
+        <head>
 
-    <%- include ("./partials/head.ejs")  %>
+            <%- include ("./partials/head.ejs")  %>
+        
+        </head>
+        <header>
+        
+            <%- include ("./partials/header.ejs")  %>
+            
+        </header>
 
-</head>
-<header>
 
-    <%- include ("./partials/header.ejs")  %>
-    
-</header>
 <h1>Listado de usuarios</h1>
 <ul>
     <% for (let i = 0; i < usuarios.length; i++)  {%> 
         <li>
-            <a href="/user/usuarios/<%=usuarios[i].id_usuario%>">
+            <a href="/user/<%=usuarios[i].id_usuario%>">
             <%=usuarios[i].fullname%> 
         </a>
         </li>
@@ -24,7 +26,7 @@
 </ul> 
 <footer class="footer">
 
-    <%- include ("./partials/footer.ejs")  %>
+    <%- include ("./partials/footer.ejs")  %>\
 
 </footer>
 </body>

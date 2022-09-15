@@ -1,1 +1,3 @@
-
+header
+linea14
+<img src="/images/avatars/<%= locals.userLogged.avatar %>" width="40" style="border-radius: 100%;">

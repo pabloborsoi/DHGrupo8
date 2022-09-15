@@ -15,16 +15,20 @@ const authMiddleware = require("../middlewares/authMiddleware");
 const adminMiddleware = require("../middlewares/adminMiddleware")
 
 //Como podemos indicar para subir el archivo nombre y donde guardarlo
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, path.resolve(__dirname, '../public/images/camisetas'));
-    },
-    filename: function (req, file, cb) {
-      cb(null, 'camiseta-'+Date.now()+path.extname(file.originalname))
-    }
-  })
+const multerDiskStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../public/images/camisetas"));
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
    
-  const upload = multer({ storage })
+  const fotoProducto = multer({ storage: multerDiskStorage });
+  
   const validacionesCrearProducto = [
     //entre parentesis se toma el Name
     body("nombre")
@@ -104,36 +108,21 @@ var storage = multer.diskStorage({
 
 // CONFIFURACION DE RUTAS Y METODOS
 productRouter.get('/', productController.index);
-productRouter.get('/json/create',authMiddleware,productController.create);
-productRouter.post('/json/create', upload.single('imagen'),validacionesCrearProducto, productController.save);
-productRouter.get('/json/detail/:id', productController.detail);
-productRouter.get('/json/edit/:id',authMiddleware,productController.edit);
-productRouter.put('/json/edit/:id',upload.single('imagen'),validacionesEditarProducto,productController.update);
-productRouter.get('/json/delete/:id',authMiddleware,productController.destroy);
-productRouter.get('/json/cart', productController.cart);
-// CONFIFURACION DE RUTAS Y METODOS
-//productRouter.get('/json', productController.index);
-//productRouter.get('/create',authMiddleware,adminMiddleware,productController.create);
-//productRouter.post('/create', upload.single('imagen'), productController.save);
-//productRouter.get('/detail/:id', productController.show);
-//productRouter.get('/edit/:id',authMiddleware,adminMiddleware,productController.edit);
-//productRouter.put('/edit/:id',upload.single('imagen'), productController.update);
-//productRouter.get('/delete/:id',authMiddleware,adminMiddleware,productController.destroy);
-//productRouter.get('/cart', productController.cart);
+
 
 ///CRUD PRODUCTOS
 //CREAR
-productRouter.get('/productos/crear',productController.cargarProducto);
-productRouter.post('/productos/crear', upload.single('imagen'),productController.guardarProducto);
+productRouter.get('/crear',authMiddleware,productController.cargarProducto);
+productRouter.post('/crear', fotoProducto.single("imagen"),productController.guardarProducto);
 //LECTURA
-productRouter.get('/productos/listado',productController.listado);
+productRouter.get('/listado',authMiddleware,productController.listado);
 //DETALLE
-productRouter.get('/productos/:id',productController.detalle);
+productRouter.get('/:id',productController.detalle);
 //ACTUALIZACION
-productRouter.get('/productos/editar/:id',productController.editar);
-productRouter.put('/productos/editar/:id', productController.actualizar);
+productRouter.get('/editar/:id',authMiddleware,productController.editar);
+productRouter.put('/editar/:id', productController.actualizar);
 //BORRADO
-productRouter.post('/productos/borrar/:id', productController.borrar);
+productRouter.post('/borrar/:id', productController.borrar);
 
 
 

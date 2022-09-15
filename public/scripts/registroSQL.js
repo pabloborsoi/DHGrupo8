@@ -9,7 +9,7 @@ window.addEventListener('load', function(){
         let esUnCorreo = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
         let campoCountry = document.querySelector ("#country");
         let campoClave = document.querySelector ("#clave");
-        //let campoFoto = document.querySelector ("#foto");
+        let campoFoto = document.querySelector ("#foto");
         let ulErrores = document.querySelector('div.errores ul')
 
         let errores = [];
@@ -39,12 +39,12 @@ window.addEventListener('load', function(){
         else if (campoClave.value.length < 8){
             errores.push('La contraseña debe tener al menos 8 caracteres');
         }
-        /*if (campoFoto.value==""){
+        if (campoFoto.value==""){
             errores.push ('Por favor, subir tu foto')
         }
         else if (!campoFoto.value.match (tienenQueSerEstosFormatos)){
             errores.push ('Por favor, subir tu foto con formato de foto valido!')
-        }*/
+        }
         console.log(errores)
 
         if(errores.length > 0){

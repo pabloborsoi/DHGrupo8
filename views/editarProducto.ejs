@@ -18,67 +18,92 @@
 </div>
 
 <h1>Editar producto</h1>
-<form acction="/product/productos/editar/<%=producto.id%>" method="POST">
+<form action="/product/editar/<%=producto.id_producto%>?_method=PUT" method="POST" enctype="multipart/form-data">
     
-    <!--<div>
-        <label for="">Producto</label>
+    <div>
+        <label for="">Nombre</label>
         <input 
         type="text" 
-        name="producto"
-        value="<%=producto.id_producto%>">
-    </div>-->
-   
-    <div>
-        <label for="">Marca</label>
-            <select name="marca"
-            id="marca">
-                <% for (let i = 0; i < marca.length; i ++) {%>
-                    <!--imprime el id del nombre q nos interesa-->
-                    <option value="<%=marca[i].id%>">
-                        <!--nombres de los datos en la base de dato-->
-                        <%=marca[i].nombre_marca%> 
-                    </option>
-                    <% } %>
-            </select> 
+        name="nombre"
+        id="name" 
+        value= "<%= locals.oldData ? oldData.nombre: null|| producto.nombre_producto%>"  >
+            <% if (locals.errors && errors.nombre) { %>
+                <p class="error"> <%= errors.nombre.msg %>  </p>
+            <% } %>
     </div>
+   
+   
 
     <div>
-        <label for="">Talle</label>
-        <select
-        name="talle"
-        id="talle">
-            <% for (let i = 0; i < talle.length; i ++) {%>
-                <!--imprime el id del nombre q nos interesa-->
-                <option value="<%=talle[i].id%>">
-                    <!--nombres de los datos en la base de dato-->
-                    <%=talle[i].nombre_talle%> 
-                </option>
-                <% } %>
+        <label>
+            Marca:
+        </label>
+        <select 
+        name="marca" 
+        id="marca" >
+            <% marca.forEach(marca => { %>
+            <option 
+            value="<%= marca.id_marca %>" 
+            <% if (marca.id_marca == producto.marca_id_marca) { %>
+                <%= 'selected' %>
+                <% }; %>>
+                <%= marca.nombre_marca %></option>
+            <% }); %>
         </select>
     </div>
-    
+
+   
+
+
     <div>
-        <label for="">Categoria</label>
-        <select
-        name="categoria"
-        id="categoria">
-            <% for (let i = 0; i < categoria.length; i ++) {%>
-                <!--imprime el id del nombre q nos interesa-->
-                <option value="<%=categoria[i].id%>">
-                    <!--nombres de los datos en la base de dato-->
-                    <%=categoria[i].nombre_categoria%> 
-                </option>
-                <% } %>
+        <label>
+            Talle:
+        </label>
+        <select 
+        name="talle" 
+        id="talle" >
+            <% talle.forEach(talle => { %>
+            <option 
+            value="<%= talle.id_talle %>" 
+            <% if (talle.id_talle == producto.talle_id_talle) { %>
+                <%= 'selected' %>
+                <% }; %>>
+                <%= talle.nombre_talle %></option>
+            <% }); %>
         </select>
     </div>
+
+
+
+    <div>
+        <label>
+            Categoria:
+        </label>
+        <select 
+        name="categoria" 
+        id="categoria" >
+            <% categoria.forEach(categoria => { %>
+            <option 
+            value="<%= categoria.id_categoria %>" 
+            <% if (categoria.id_categoria == producto.categoria_id_categoria) { %>
+                <%= 'selected' %>
+                <% }; %>>
+                <%= categoria.nombre_categoria %></option>
+            <% }); %>
+        </select>
+    </div>
+
 
     <div>
         <label for="">Precio</label>
         <input 
         type="number" 
         name="precio"
-        id="precio" 
-        value="<%=producto.precio%>">
+        id="precio"
+        value= "<%= locals.oldData ? oldData.precio: null|| producto.precio%>"  >
+            <% if (locals.errors && errors.precio) { %>
+                <p class="error"> <%= errors.precio.msg %>  </p>
+            <% } %>
     </div>
 
     <div>

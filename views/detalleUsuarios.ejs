@@ -12,7 +12,8 @@
     <%- include ("./partials/header.ejs")  %>
     
 </header>
-          <h1><%=usuario.id_usuario%></h1>
+    
+    <h1><%=usuario.id_usuario%></h1>
     <ul>
         <li>
             mail: <%=usuario.mail%> 
@@ -20,18 +21,17 @@
         <li>
             pais: <%=usuario.pais%> 
         </li>
-        <li>
-            pass: <%=usuario.pass%> 
-        </li>
+        
         <li>
             fullname: <%=usuario.fullname%> 
         </li>
         <!--FALTA AVATAR-->
     </ul>
-    <a href="/user/usuarios/editar/<%=usuario.id_usuario%>">
+    
+    <a href="/user/editar/<%=usuario.id_usuario%>">
 <button>Editar</button>
 </a>
-<form action="/usuarios/borrar/<%=usuario.id%>" method="POST">
+<form action="/borrar/<%=usuario.id%>" method="POST">
     <button 
     type="submit">Borrar</button>
 </form>

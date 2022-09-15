@@ -13,35 +13,45 @@
     
 </header>
 <h1>Editar usuario</h1>
-<form acction="/user/usuarios/editar/<%=usuario.id%>" method="POST">
+
+<form action="/user/editar/<%=encontrado.id_usuario%>?_method=PUT"  method="POST" enctype="multipart/form-data">
+    
+    
     <div>
         <label for="">Nombre Completo</label>
         <input 
         type="text" 
         name="fullname" 
-        value="<%=usuario.fullname%>">
+        value="<%=encontrado.fullname%>">
     </div>
+
     <div>
         <label for="">Mail</label>
         <input 
         type="text" 
         name="mail" 
-        value="<%=usuario.mail%>">
+        value="<%=encontrado.mail%>">
     </div>
+
     <div>
         <label for="">Pais</label>
-        <input 
-        type="number" 
-        name="precio" 
-        value="<%=usuario.pais%>">
-    </div>
-    <div>
-        <label for="">Contraseña</label>
-        <input 
+        <select 
         type="text" 
-        name="pass" 
-        value="<%=usuario.pass%>">
+        name="pais"
+        id="country">
+        <option value="">Elegí un país</option>
+									<%  
+										let countries = ['Argentina', 'Bolivia', 'Brasil', 'Colombia', 'Chile', 'Ecuador', 'Paraguay', 'Perú', 'Uruguay', 'Venezuela'];
+									%>
+									<% for (const oneCountry of countries) { %>
+										<option 
+											value="<%= oneCountry %>"
+											<%= locals.oldData && (oneCountry === oldData.country) ? 'selected' : null %> 
+										> <%= oneCountry %> </option>
+									<% } %>
+        </select>
     </div>
+
     <!--FALTA AVATAR-->
     <div>
         <button type="submit">Editar</button>

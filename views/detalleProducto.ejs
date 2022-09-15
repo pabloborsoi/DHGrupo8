@@ -12,26 +12,38 @@
     <%- include ("./partials/header.ejs")  %>
     
 </header>
-          <h1><%=producto.id_producto%></h1>
+          <h1><%=encontrado.id_producto%></h1>
     <ul>
         <!--VER, NO TOMA EL NOMBRE DE LA BASE DE DATO-->
+
+        <div>
+            <img
+              src="/images/camisetas/<%= encontrado.foto %>"
+              alt="foto del producto"
+              class="fotoproducto"
+            />
+          </div>
+
         <li>
-            marca: <%=producto.marca.nombre_marca%> 
+            nombre: <%=encontrado.nombre_producto%> 
         </li>
         <li>
-            talle: <%=producto.talle.nombre_talle%> 
+            marca: <%=encontrado.marca.nombre_marca%> 
         </li>
         <li>
-            categoria: <%=producto.categoria.nombre_categoria%> 
+            talle: <%=encontrado.talle.nombre_talle%> 
         </li>
         <li>
-            precio: <%=producto.precio%> 
+            categoria: <%=encontrado.categoria.nombre_categoria%> 
+        </li>
+        <li>
+            precio: <%=encontrado.precio%> 
         </li>
     </ul>
-    <a href="/product/productos/editar/<%=producto.id_producto%>">
+    <a href="/product/editar/<%=encontrado.id_producto%>">
 <button>Editar</button>
 </a>
-<form action="/productos/borrar/<%=producto.id%>" method="POST">
+<form action="/borrar/<%=encontrado.id_producto%>" method="POST">
     <button 
     type="submit">Borrar</button>
 </form>
